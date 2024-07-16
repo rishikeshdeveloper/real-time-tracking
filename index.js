@@ -1,34 +1,34 @@
-const express = require('express');
-const path = require('path')
-const http = require('http');
-const socketIo = require('socket.io');
-const server =require('http').createServer();
-const io = socketIo(server);
-
+const express = require("express");
 const app = express();
+const path = require("path");
+const http = require("http");
+const socketIo = require("socket.io");
+const server = require("http").createServer(app);
+const io = socketIo(server);
 
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
 
-app.use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs');
+app
+  .use(express.static(path.join(__dirname, "public")))
+  .set("views", path.join(__dirname, "views"))
+  .set("view engine", "ejs");
 
-io.on('connection', (socket) => {
-  socket.on('location', (data) => {
-    io.emit('receiveLocation', {id: socket.id, ...data});
-  })
-  console.log('a user connected');
-})
-
-
-app.get('/', (req, res) => {
-  res.render('index');
+io.on("connection", (socket) => {
+  socket.on("send-location ", function (data) {
+    console.log(data);
+    io.emit("receiveLocation", { id: socket.id, ...data });
+  });
+  console.log("a user connected");
 });
 
-app.get('/api', (req, res) => {
-  res.json({"msg": "Hello world"});
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-app.listen(port, () => {
+app.get("/api", (req, res) => {
+  res.json({ msg: "Hello world" });
+});
+
+server.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`);
-})
+});
