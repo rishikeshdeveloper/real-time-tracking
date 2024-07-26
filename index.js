@@ -14,11 +14,9 @@ app
   .set("view engine", "ejs");
 
 io.on("connection", (socket) => {
-  socket.on("send-location ", function (data) {
-    console.log(data);
+  socket.on("send-location", function (data) {
     io.emit("receiveLocation", { id: socket.id, ...data });
   });
-  console.log("a user connected");
 });
 
 app.get("/", (req, res) => {
