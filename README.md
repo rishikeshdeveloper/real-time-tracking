@@ -104,7 +104,3 @@ For any questions or suggestions, feel free to reach out to the project maintain
 ---
 
 Happy coding! 🚀
-
----
-
-_Note: Replace `rishikeshdeveloper` with your actual GitHub username in the clone URL._
