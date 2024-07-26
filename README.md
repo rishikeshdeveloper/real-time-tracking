@@ -22,7 +22,7 @@ Before you begin, ensure you have met the following requirements:
 
    ```bash
    git clone https://github.com/rishikeshdeveloper/real-time-tracking
-   cd realtime-location-tracking-app
+   cd realtime-location-tracking
    ```
 
 2. **Install dependencies**:
@@ -53,7 +53,7 @@ Before you begin, ensure you have met the following requirements:
 ## Folder Structure
 
 ```
-realtime-location-tracking-app/
+realtime-location-tracking/
 │
 ├── public/
 │   ├── style.css
